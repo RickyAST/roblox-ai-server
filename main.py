@@ -16,8 +16,8 @@ def chat():
         return jsonify({"response": "⚠️ OpenAI ключ не установлен."})
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # или gpt-4, если есть доступ
+        response = openai.chat.completions.create(
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "Ты дружелюбный NPC в Roblox. Отвечай просто, интересно и с юмором."},
                 {"role": "user", "content": user_message}
