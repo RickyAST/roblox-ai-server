@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-import openai
 import os
+import openai
 
 app = Flask(__name__)
 
@@ -12,7 +12,7 @@ def chat():
     user_message = data.get("message", "")
 
     if not openai.api_key:
-        return jsonify({"response": "Это тестовый ответ от ИИ-сервера."})
+        return jsonify({"response": "Тестовый ответ: ИИ отключён."})
 
     try:
         completion = openai.ChatCompletion.create(
@@ -31,3 +31,6 @@ def chat():
 @app.route("/", methods=["GET"])
 def root():
     return "AI Server Running", 200
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
