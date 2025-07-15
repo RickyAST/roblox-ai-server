@@ -5,6 +5,7 @@ import openai
 app = Flask(__name__)
 
 openai.api_key = os.environ.get("OPENROUTER_API_KEY")
+openai.api_base = "https://openrouter.ai/api/v1"
 
 @app.route("/chat", methods=["POST"])
 def chat():
